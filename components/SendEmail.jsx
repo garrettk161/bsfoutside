@@ -3,19 +3,23 @@ import {useState} from 'react'
 
 
 
-const sendEmail = (props) =>{
+const SendEmail = (props) =>{
     const [ Valid, setValid ] = useState(false);
     let Aemail =props.Email
     let code = 0
 
 function generateCode () {
-    code = Math.floor(Math.random() * 10000)
+    code = Math.floor(1000 + Math.random() * 9999)
 }
 
 function validate (){
     if (document.getElementById('inputCode').value== code){
         console.log("yep that's valid")
-        //setValid(true);
+        setValid(true);
+        props.Test(true)
+    }
+    else {
+        console.log("that aint right")
     }
 }
 
@@ -49,5 +53,5 @@ return (
 
 }
 
-export default sendEmail
+export default SendEmail
 
